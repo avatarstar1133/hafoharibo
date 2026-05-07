@@ -1,0 +1,161 @@
+/* ================= CSS VARIABLES ================= */
+:root {
+    /* 1. MẶC ĐỊNH: MIDNIGHT GLASSMORPHISM (MÀU TÍM) */
+    --bg-color: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --text-color: #ffffff;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Jost', sans-serif;
+    --nav-color: rgba(255,255,255,0.6);
+    --nav-hover: #fff;
+    --profile-radius: 50%;
+    --profile-border: 2px solid rgba(255, 255, 255, 0.2);
+    --profile-filter: none;
+    --profile-bg: rgba(255, 255, 255, 0.05);
+    --profile-shadow: none;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: 1px solid rgba(255, 255, 255, 0.1);
+    --card-radius: 16px;
+    --card-shadow: none;
+    --card-backdrop: blur(12px);
+    --card-text: #fff;
+    --icon-color: rgba(255,255,255,0.8);
+    --arrow-color: rgba(255,255,255,0.4);
+    --card-hover-bg: rgba(255, 255, 255, 0.15);
+    --card-hover-text: #fff;
+    --card-hover-transform: scale(1.02);
+}
+
+body.theme-original {
+    /* 2. ORIGINAL LUXURY (MÀU ĐEN) */
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --nav-color: #666;
+    --nav-hover: #fff;
+    --profile-radius: 50%;
+    --profile-border: 1px solid #222;
+    --profile-filter: none;
+    --profile-bg: transparent;
+    --profile-shadow: none;
+    --card-bg: #111;
+    --card-border: 1px solid #1a1a1a;
+    --card-radius: 12px;
+    --card-shadow: none;
+    --card-backdrop: none;
+    --card-text: #eee;
+    --icon-color: #eee;
+    --arrow-color: #444;
+    --card-hover-bg: #ffffff;
+    --card-hover-text: #000000;
+    --card-hover-transform: scale(1.02);
+}
+
+body.theme-quiet-luxury {
+    /* 3. QUIET LUXURY (SÁNG BO GÓC) */
+    --bg-color: #F5F2EB;
+    --text-color: #3C3633;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Outfit', sans-serif;
+    --nav-color: #8A817C;
+    --nav-hover: #3C3633;
+    --profile-radius: 50%;
+    --profile-border: none;
+    --profile-filter: none;
+    --profile-bg: transparent;
+    --profile-shadow: 0 10px 25px rgba(60, 54, 51, 0.15);
+    --card-bg: #FFFFFF;
+    --card-border: 1px solid transparent;
+    --card-radius: 20px;
+    --card-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    --card-backdrop: none;
+    --card-text: #3C3633;
+    --icon-color: #8A817C;
+    --arrow-color: #D5CDC4;
+    --card-hover-bg: #FFFFFF;
+    --card-hover-text: #3C3633;
+    --card-hover-transform: translateY(-3px);
+}
+
+body.theme-high-fashion {
+    /* 4. HIGH FASHION (TRẮNG VUÔNG VẮN) */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --font-heading: 'Bodoni Moda', serif;
+    --font-body: 'Inter', sans-serif;
+    --nav-color: #000;
+    --nav-hover: #000;
+    --profile-radius: 0;
+    --profile-border: none;
+    --profile-filter: grayscale(100%);
+    --profile-bg: transparent;
+    --profile-shadow: none;
+    --card-bg: transparent;
+    --card-border: 1px solid #000;
+    --card-radius: 0;
+    --card-shadow: none;
+    --card-backdrop: none;
+    --card-text: #000;
+    --icon-color: #000;
+    --arrow-color: #000;
+    --card-hover-bg: #000;
+    --card-hover-text: #fff;
+    --card-hover-transform: scale(1.02);
+}
+
+/* ================= CSS CẤU TRÚC (GIỮ NGUYÊN) ================= */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6; display: flex; justify-content: center; overflow-x: hidden; min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.app-container {
+    width: 100%; max-width: 480px; min-height: 100vh; padding: 40px 24px;
+    display: flex; flex-direction: column; opacity: 0; transform: translateY(15px); transition: all 1s ease;
+}
+.app-container.visible { opacity: 1; transform: translateY(0); }
+
+header { text-align: center; margin-bottom: 45px; }
+
+.top-nav { display: flex; justify-content: center; gap: 24px; margin-bottom: 35px; }
+.top-nav a { color: var(--nav-color); text-decoration: none; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; transition: color 0.3s ease; }
+.top-nav a:hover { color: var(--nav-hover); text-shadow: 0 0 8px rgba(255,255,255,0.3); } /* Thêm hiệu ứng sáng nhẹ khi di chuột */
+
+.profile-img {
+    width: 115px; height: 115px; border-radius: var(--profile-radius); object-fit: cover;
+    margin-bottom: 20px; border: var(--profile-border); filter: var(--profile-filter);
+    background: var(--profile-bg); box-shadow: var(--profile-shadow); padding: 4px; transition: all 0.5s ease;
+}
+
+.brand-name { font-family: var(--font-heading); font-size: 32px; font-weight: 400; letter-spacing: 2px; transition: all 0.5s ease; }
+.tagline { font-size: 12px; opacity: 0.7; text-transform: uppercase; letter-spacing: 3px; font-weight: 300; }
+
+.social-links { display: flex; flex-direction: column; gap: 14px; flex-grow: 1; }
+
+.link-card {
+    display: flex; align-items: center; background: var(--card-bg); border: var(--card-border);
+    padding: 18px 24px; border-radius: var(--card-radius); text-decoration: none; color: var(--card-text);
+    box-shadow: var(--card-shadow); backdrop-filter: var(--card-backdrop); -webkit-backdrop-filter: var(--card-backdrop);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-card i:first-child { font-size: 20px; width: 30px; color: var(--icon-color); transition: all 0.3s ease; }
+.link-card span { flex-grow: 1; margin-left: 15px; font-size: 14px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+.arrow { font-size: 12px; color: var(--arrow-color); transition: transform 0.3s ease; }
+
+.link-card:active, .link-card:hover { background: var(--card-hover-bg); color: var(--card-hover-text); transform: var(--card-hover-transform); }
+.link-card:active .arrow, .link-card:hover .arrow { color: var(--card-hover-text); transform: translateX(5px); }
+.link-card:active i:first-child, .link-card:hover i:first-child { color: var(--card-hover-text); }
+
+/* BỘ CHỌN THEME Ở FOOTER */
+footer { margin-top: 50px; text-align: center; padding-bottom: 20px; }
+.theme-selector { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; }
+.theme-btn { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.theme-btn:hover { transform: scale(1.1); }
+.theme-btn.active { box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--text-color); }
+.copyright { font-size: 10px; opacity: 0.5; letter-spacing: 2px; }
